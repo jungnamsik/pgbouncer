@@ -49,5 +49,5 @@ do
  echo "\"$f1\"" "\"$f2\"" >> /etc/pgbouncer/userlist.txt
 done
 
-
+rm -y /tmp/users.tmp
 
