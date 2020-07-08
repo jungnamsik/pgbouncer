@@ -35,6 +35,8 @@ default_pool_size = 80
 ignore_startup_parameters = extra_float_digits
 EOF
 
+scp /ect/pgbouncer/pgbouncer.ini pg02:/ect/pgbouncer/pgbouncer.ini 
+scp /ect/pgbouncer/pgbouncer.ini pg03:/ect/pgbouncer/pgbouncer.ini 
 
 #@=====[pgbouncer userlist.txt]
 # first dump the info into a temp file
@@ -49,5 +51,11 @@ do
  echo "\"$f1\"" "\"$f2\"" >> /etc/pgbouncer/userlist.txt
 done
 
+scp /ect/pgbouncer/userlist.txt pg02:/ect/pgbouncer/userlist.txt 
+scp /ect/pgbouncer/userlist.txt pg03:/ect/pgbouncer/userlist.txt 
+
+
+
 rm /tmp/users.tmp
+
 
