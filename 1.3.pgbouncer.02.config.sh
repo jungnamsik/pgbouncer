@@ -11,11 +11,11 @@ psql <<-EOF
   \q
 EOF
 
-[ ! -f /ect/pgbouncer/pgbouncer.ini.org ] $$ cp /ect/pgbouncer/pgbouncer.ini /ect/pgbouncer/pgbouncer.ini.org
+[ ! -f /etc/pgbouncer/pgbouncer.ini.org ] $$ cp /etc/pgbouncer/pgbouncer.ini /etc/pgbouncer/pgbouncer.ini.org
 
-#@=====[pgbouncer /ect/pgbouncer/pgbouncer.ini ]
+#@=====[pgbouncer /etc/pgbouncer/pgbouncer.ini ]
 
-cat <<EOF > /ect/pgbouncer/pgbouncer.ini
+cat <<EOF > /etc/pgbouncer/pgbouncer.ini
 ;
 ; pgbouncer configuration example
 [databases]
@@ -37,8 +37,8 @@ default_pool_size = 80
 ignore_startup_parameters = extra_float_digits
 EOF
 
-scp /ect/pgbouncer/pgbouncer.ini pg02:/ect/pgbouncer/pgbouncer.ini 
-scp /ect/pgbouncer/pgbouncer.ini pg03:/ect/pgbouncer/pgbouncer.ini 
+scp /etc/pgbouncer/pgbouncer.ini pg02:/etc/pgbouncer/pgbouncer.ini 
+scp /etc/pgbouncer/pgbouncer.ini pg03:/etc/pgbouncer/pgbouncer.ini 
 
 #@=====[pgbouncer userlist.txt]
 # first dump the info into a temp file
@@ -53,8 +53,8 @@ do
  echo "\"$f1\"" "\"$f2\"" >> /etc/pgbouncer/userlist.txt
 done
 
-scp /ect/pgbouncer/userlist.txt pg02:/ect/pgbouncer/userlist.txt 
-scp /ect/pgbouncer/userlist.txt pg03:/ect/pgbouncer/userlist.txt 
+scp /etc/pgbouncer/userlist.txt pg02:/etc/pgbouncer/userlist.txt 
+scp /etc/pgbouncer/userlist.txt pg03:/etc/pgbouncer/userlist.txt 
 
 
 
