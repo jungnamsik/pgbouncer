@@ -7,11 +7,11 @@
 
 HOST1="192.168.79.16 pg01.localnet pg01"
 HOST2="192.168.79.17 pg02.localnet pg02"
-HOST2="192.168.79.18 pg02.localnet pg02"
+HOST3="192.168.79.18 pg03.localnet pg03"
 
 [ $(grep -Fxc "${HOST1}" /etc/hosts) -eq 0 ] && echo "${HOST1}" >>  /etc/hosts
 [ $(grep -Fxc "${HOST2}" /etc/hosts) -eq 0 ] && echo "${HOST2}" >>  /etc/hosts
-[ $(grep -Fxc "${HOST2}" /etc/hosts) -eq 0 ] && echo "${HOST2}" >>  /etc/hosts
+[ $(grep -Fxc "${HOST3}" /etc/hosts) -eq 0 ] && echo "${HOST3}" >>  /etc/hosts
 
 #ssh pg02
 #ssh pg03
