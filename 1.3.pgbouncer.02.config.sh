@@ -1,4 +1,16 @@
 # as user postgres
+USER=`whoami`
+if [ "${USER}" != "postgres" ]; then
+    echo "not postgres!! su - postgres "
+    exit 1
+fi
+
+
+psql <<-EOF
+  create user pgb with superuser login password 'pgb1234' ;
+  \q
+EOF
+
 #@=====[pgbouncer /ect/pgbouncer/pgbouncer.ini ]
 
 cat <<EOF > /ect/pgbouncer/pgbouncer.ini
