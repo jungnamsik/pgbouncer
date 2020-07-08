@@ -23,17 +23,3 @@ sudo chown postgres:postgres -R /etc/pgbouncer
 sudo mkdir /var/run/pgbouncer
 sudo chown postgres:postgres /var/run/pgbouncer
 
-
-#@=====[pgbouncer userlist.txt]
-# first dump the info into a temp file
-psql -c "select rolname,rolpassword from pg_authid;" > /tmp/users.tmp
-touch /etc/pgbouncer/userlist.txt.x
-# then go through the file to remove/add the entry in pool_passwd file
-cat /tmp/users.tmp | awk 'BEGIN {FS="|"}{print $1" "$2}' | grep md5 | while read f1 f2
-do
- echo "setting passwd of $f1 in /etc/pgbouncer/userlist.txt"
- # delete the line if exits
- sed -i -e "/^\"${f1}\"/d" /etc/pgbouncer/userlist.txt.x
- echo "\"$f1\"" "\"$f2\"" >> /etc/pgbouncer/userlist.txt.x
-done
-
