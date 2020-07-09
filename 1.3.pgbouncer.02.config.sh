@@ -56,8 +56,6 @@ done
 scp /etc/pgbouncer/userlist.txt pg02:/etc/pgbouncer/userlist.txt 
 scp /etc/pgbouncer/userlist.txt pg03:/etc/pgbouncer/userlist.txt 
 
-
-
 rm /tmp/users.tmp
 
 

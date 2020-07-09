@@ -1,3 +1,4 @@
+#@=====[cluster 체크: master, standby check]
 # on pg01 as user postgres
 echo "# check the nodes table, it contains meta-data for repmgr "
 psql -U repmgr repmgr -c "select * from nodes;"

@@ -44,14 +44,14 @@ EOF
 
 # on ${NODE_NAME} as user postgres
 
-echo "host:${NODE_NAME} => master, standby resister!!"
+echo "host:${NODE_NAME} => master, standby register!!"
 # on ${NODE_NAME}
 if [ "${NODE_NAME}" = "pg01" ]; then
     #@=====[repmgr 기본 데이터베이스로 등록]
     echo "repmgr -f /etc/repmgr/${PGDBVER}/repmgr.conf -v master register"
     repmgr -f /etc/repmgr/${PGDBVER}/repmgr.conf -v master register
 elif [ "${NODE_NAME}" = "pg02" ] || [ "${NODE_NAME}" = "pg03" ]; then
-    #@=====[repmgr slave 서버 설정]
+    #@=====[repmgr standby 서버 설정]
     # make sure postgres is not running !
     sudo systemctl stop postgresql
     # on pg02 as user postgres
@@ -63,7 +63,7 @@ elif [ "${NODE_NAME}" = "pg02" ] || [ "${NODE_NAME}" = "pg03" ]; then
     repmgr -f /etc/repmgr/${PGDBVER}/repmgr.conf standby register --force
 fi
 
-echo "host:${NODE_NAME} => master, standby resister Success!!"
+echo "host:${NODE_NAME} => master, standby register Success!!"
 sudo systemctl enable postgresql
 
 
